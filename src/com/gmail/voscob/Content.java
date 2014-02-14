@@ -9,11 +9,21 @@ public class Content {
 	private List<String> contentList = null;
 	static String[] ar = new String[40];
 	
-	public Content(List<String> url) throws IOException, InterruptedException {
+	public Content(List<String> url, String query) throws IOException, InterruptedException {
+		List<Thread> threads = new ArrayList<Thread>();
+
 		for (int i = 0; i < url.size(); i++) {
-			new GetContent(url.get(i), i);
+		    threads.add(new Thread(new GetContent(url.get(i), i, query)));
 		}
-		Thread.sleep(20000);
+
+		for (Thread thread: threads) {
+		    thread.start();
+		}
+		
+		for (Thread thread: threads) {
+		    thread.join();
+		}
+		
 		contentList = new ArrayList<String>(Arrays.asList(ar));
 	}
 	

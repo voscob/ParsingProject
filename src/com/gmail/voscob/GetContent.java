@@ -17,19 +17,20 @@ import org.jsoup.Jsoup;
 public class GetContent implements Runnable {
 	private Thread t;
 	private String url;
+	private String query;
 	private int index;
 
-	public GetContent(String url, int index) {
+	public GetContent(String url, int index, String query) {
 		t = new Thread(this, "th_" + index);
 		this.url = url;
+		this.query = query;
 		this.index = index;
 //		System.out.println(url);
-		t.start();
 	}
 
 	@Override
 	public void run() {
-		System.out.println("start: " + t);
+		System.out.println(query + ": start: " + t);
 		URL website;
 
 		BufferedReader in = null;
@@ -58,7 +59,7 @@ public class GetContent implements Runnable {
 		try {
 			if (in == null) {
 				Content.ar[index] = "null";
-				System.out.println(t + "   =   : return!");
+				System.out.println(query + ": " + t + "   =   : return!");
 				return;
 			}
 			while ((inputLine = in.readLine()) != null) {
@@ -128,11 +129,11 @@ public class GetContent implements Runnable {
 		}
 		if (outoutLine.length() > 1500) {
 			Content.ar[index] = outoutLine;
-			System.out.println(t + "   =   : " + outoutLine);
+			System.out.println(query + ": " + t + "   =   : " + outoutLine);
 		}
 		else {
 			Content.ar[index] = "null";
-			System.out.println(t + "   =   : null!");
+			System.out.println(query + ": " + t + "   =   : null!");
 		}
 	}
 }

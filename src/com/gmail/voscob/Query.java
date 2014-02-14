@@ -23,7 +23,7 @@ public class Query {
 		List<String> listNames_Bing = resQ_Bing.getNamesList();
 		List<String> listDescriptions_Bing = resQ_Bing.getDescriptionsList();
 		
-		cont = new Content(listLinks_Bing);
+		cont = new Content(listLinks_Bing, str);
 		List<String> listContent_Bing = cont.getContentList();
 		System.out.println("finish");
 		
