@@ -2,7 +2,6 @@ package com.gmail.voscob;
 
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 public class Content {
@@ -13,7 +12,7 @@ public class Content {
 		List<Thread> threads = new ArrayList<Thread>();
 
 		for (int i = 0; i < url.size(); i++) {
-		    threads.add(new Thread(new GetContent(url.get(i), i, query)));
+		    threads.add(new Thread(new GetContentJsoup(url.get(i), i, query)));
 		}
 
 		for (Thread thread: threads) {
@@ -23,8 +22,6 @@ public class Content {
 		for (Thread thread: threads) {
 		    thread.join();
 		}
-		
-		contentList = new ArrayList<String>(Arrays.asList(ar));
 	}
 	
 	public List<String> getContentList() {

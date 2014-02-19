@@ -9,11 +9,13 @@ public class TempMain {
 	public static void main(String[] args) throws IOException, InterruptedException {
 		
 		List<String> list = new ArrayList<>();
-		list.add("moto g dual sim");
-		list.add("women's snow boots");
-		list.add("candy crush saga on facebook");
-		list.add("already a member of netflix");
-		list.add("windows live movie maker");
+//		list.add("moto g dual sim");
+//		list.add("women's snow boots");
+//		list.add("candy crush saga on facebook");
+//		list.add("already a member of netflix");
+//		list.add("windows live movie maker");
+		list.add("war and peace");
+		
 		for (int i = 0; i < list.size(); i++) {
 			System.out.println("==");
 			System.out.println("Strat query: " + list.get(i));

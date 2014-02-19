@@ -41,9 +41,9 @@ public class GetContent implements Runnable {
 					new InputStreamReader(
 							connection.getInputStream()));
 		} catch (MalformedURLException e) {
-//			e.printStackTrace();
+			e.printStackTrace();
 		} catch (IOException e) {
-//			e.printStackTrace();
+			e.printStackTrace();
 		}
 
 		String inputLine;
